@@ -77,17 +77,25 @@
         
         $('input[name="student"]').on('click', function(){
 		if ($('input:checked').val() == "cs"){
-                        $fields.fadeIn(400).removeClass('hidden');
-			$currentStudent.fadeIn(400).removeClass('hidden');
+                        showAll();
 			$sid.val("");
 			
 		}
 		else if($('input:checked').val() == "ns"){
-                        $fields.fadeIn(400).removeClass('hidden');
+                        show();
 			$currentStudent.fadeOut(400).addClass('hidden');
 			
 		}
 	});
+        
+        function showAll() {
+            $fields.fadeIn(400).removeClass('hidden');
+	    $currentStudent.fadeIn(400).removeClass('hidden');
+        }
+        
+        function show(){
+            $fields.fadeIn(400).removeClass('hidden');
+        }
         
         $("#continue").onclick(function()
             {
