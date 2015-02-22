@@ -77,7 +77,7 @@
 			<h3>Please select one:</h3>
 			<input type='radio' name='student' value='cs' id='cs'<?php echo ($_SESSION['student'] === "cs")?"checked":""; ?>>
 				<label for="cs">I am a current student&nbsp;&nbsp;</label>
-			<input type='radio' name='student' value='ns' id='ns'<?php echo ($_SESSION['student'] === "ns")?"checked":"";>
+			<input type='radio' name='student' value='ns' id='ns'<?php echo ($_SESSION['student'] === "ns")?"checked":""; ?>>
 				<label for="ns">I am a new student</label>
 		</div>                 
 		<div class="show form-group">
