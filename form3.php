@@ -1,5 +1,17 @@
 <?php
 session_start();
+ //*** Start the buffer
+    ob_start();
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if(isset($_POST['Submit'])){
+            header("Location: index.php?page=form4");
+            exit;
+        }
+        if(isset($_POST['Previous'])){
+            header("Location: index.php?page=form2");
+            exit;
+        }
+}
 $_SESSION['veteran'] = $_POST['veteran'];
 $_SESSION['is'] = $_POST['is'];
 $_SESSION['rs'] = $_POST['rs'];
@@ -33,11 +45,13 @@ $_SESSION['fileToUpload'] = $_POST['fileToUpload'];
 
        
                 <h3>Which degree are you interested in?</h3>
-                <input type="radio" id="software" name="degree" value="software" onclick="javascript:yesnoCheck();"> Software Development </input>
-                <input type="radio" id="network" name="degree" value="network"onclick="javascript:yesnoCheck();"> Network & Security </input>
-                <input type="radio" id="ud" name="degree" value="ud" onclick="javascript:yesnoCheck();"> Undecided </input>
+                <input type="radio" id="degree" name="degree" value="software">Software Development</input>
+                <input type="radio" id="degree" name="degree" value="network">Network & Security</input>
+                <input type="radio" id="degree" name="degree" value="ud">Undecided</input>
                 
                 <br>
+                    
+                
                     
                     
                   
@@ -75,7 +89,7 @@ $_SESSION['fileToUpload'] = $_POST['fileToUpload'];
                     </div>
                         </div>
                     
-                    <div id="uu">
+                    <div id="ud">
                         
                         <br>Please list any IT classes that you have taken:
                         <br><textarea id="note" name="comment" cols="25" rows="8"></textarea></p> 
@@ -96,42 +110,13 @@ $_SESSION['fileToUpload'] = $_POST['fileToUpload'];
             </div>
         </form>
 
-  
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="javascript/form3.js"></script>    
 
-<script>
-window.onload = function() {
-    document.getElementById('ss').style.display = 'none';
-    document.getElementById('nn').style.display = 'none';
-    document.getElementById('uu').style.display = 'none';
-}
-function yesnoCheck() {
-    if (document.getElementById('software').checked) {
-        document.getElementById('ss').style.display = 'block';
-         document.getElementById('nn').style.display = 'none';
-           document.getElementById('uu').style.display = 'none';
-    
-    }
-    else if ((document.getElementById('network').checked)) {
-     document.getElementById('ss').style.display = 'none';
-         document.getElementById('nn').style.display = 'block';
-           document.getElementById('uu').style.display = 'none';
-    }
-    else if ((document.getElementById('ud').checked)) {
-        
-        document.getElementById('ss').style.display = 'none';
-        document.getElementById('nn').style.display = 'none';
-          document.getElementById('uu').style.display = 'block';
-    }
-}  
-    
-        
-        
-        
-        
-</script>
 
   </body>
 </html>
+<?php
+ //Flush buffer
+ ob_flush();
+?>
