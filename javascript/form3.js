@@ -1,25 +1,25 @@
-var $soft= $('#software');
-var $net= $('#network');
-var $none= $('#uu');
+document.getElementById('buttons').style.display = 'block';
 
-$soft.addClass('hidden');
-$net.addClass('hidden');
-$none.addClass('hidden');
-
-$('input[name="degree"]').on('click', function(){
-		if ($('input:checked').val() == "software"){
-                        show();
-		    alert("beep");
-		}
-		else if($('input:checked').val() == "network"){
-                        show();
-			
-		}else if($('input:checked').val() == "ud"){
-                   show();
-                }
-	});
-
-function show(){
-    $('#software').removeClass('hidden');
-    
+var main = function() {
+    document.getElementById('ss').style.display = 'none';
+    document.getElementById('nn').style.display = 'none';
+    document.getElementById('uu').style.display = 'none';
+    document.getElementById('buttons').style.display = 'none';
 }
+
+function yesnoCheck() {
+    if (document.getElementById('software').checked) {
+        document.getElementById('ss').style.display = 'block';
+         document.getElementById('nn').style.display = 'none';
+           document.getElementById('uu').style.display = 'none';
+    
+    }
+    else if ((document.getElementById('network').checked)) {
+     document.getElementById('ss').style.display = 'none';
+         document.getElementById('nn').style.display = 'block';
+           document.getElementById('uu').style.display = 'none';
+    }
+    document.getElementById('buttons').style.display = 'block';
+}
+
+$(document).ready(main);
