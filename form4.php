@@ -60,32 +60,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <title>Education</title>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
         <form class="form-inline" method="post" action="#" onsubmit="return(validateForm());">
 
 
        
 
       <div class="container">
-          <h4>Please check all that you have achieved</h4>
+          <h4>Please select the highest that you have achieved</h4>
         
             <input type="radio" id="degree" name="degree" value="GED">High school diploma or GED</input>
             <br><input type="radio" id="degree" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">Associates degree (AA, AS, AAS, AAS-T)</input>
@@ -100,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           <input type="number" class="form-control" id="collegeCredits" name="collegeCredits"  min= 0 max= 999 value = 0 required>
           <?php echo error('collegeCredits') ?>
           <h4>Transcripts</h4>
-          <h5>If you want, you can upload your unofficial transcript here</h5>
+          <h5>You can upload an unofficial transcript here</h5>
        
           <input type="file" class="btn btn-lg" name="fileToUpload" id="fileToUpload">
         
@@ -126,10 +107,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-
-  </body>
-</html>
 <?php
          //Flush buffer
         ob_flush();

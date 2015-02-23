@@ -1,74 +1,71 @@
 <?php  
-    //*** Start a session
-    session_start();
-    //*** Start the buffer
-    ob_start();
+//*** Start a session
+session_start();
+//*** Start the buffer
+ob_start();
 
-    $errorsArray = array();
-    
-    
-    //Check if POST
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if(isset($_POST['Submit'])){
-        
-	    //Validating POST
-	    //Pattern to match
-	    $patternStr = "/\S+/";
-	    $patternNum = "/^[0-9\_]{7,10}/";
-	    $patternEmail = "/.+@.+\..+/";
-	    $patternSID = "/^[0-9\_]{9}/";
-	    
-	    if(0 === preg_match($patternStr, $_POST['first'])){
-		$errorsArray['first'] = "Please enter a first name.";
+$errorsArray = array();
+
+
+//Check if POST
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	if(isset($_POST['Submit'])){	
+		//Validating POST
+		//Pattern to match
+		$patternStr = "/\S+/";
+		$patternNum = "/^[0-9\_]{7,10}/";
+		$patternEmail = "/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/";
+		$patternSID = "/^[0-9\_]{9}/";
 		
-	    }else{
-		$_SESSION['first']= $_POST['first'];
-	    }
-	    
-	    if(0 === preg_match($patternStr, $_POST['last'])){
-		$errorsArray['last'] = "Please enter a last name.";
-	    }else{
-		$_SESSION['last']= $_POST['last'];
-	    }
-	    
-	    if(0 === preg_match($patternEmail, $_POST['email'])){
-		$errorsArray['email'] = "Please enter a valid email.";
-	    }else{
-		$_SESSION['email']= $_POST['email'];
-	    }
-	    
-	    if(0 === preg_match($patternNum, $_POST['phone'])){
-		$errorsArray['phone'] = "Please enter a valid number.";
-	    }else{
-		$_SESSION['phone']= $_POST['phone'];
-	    }
-	    if($_POST['student']== "cs"){
-		if(0 == preg_match($patternSID, $_POST['studentId'])){
-		    $errorsArray['sid'] = "Please enter your 9 digit student ID.";
+		if(0 === preg_match($patternStr, $_POST['first'])){
+			$errorsArray['first'] = "Please enter a first name.";	
 		}else{
-		    $_SESSION['sid'] = $_POST['studentId'];
-		    $_SESSION['student'] = "cs";
+			$_SESSION['first']= $_POST['first'];
 		}
-	    }else{
-		$_SESSION['student'] = "ns";
-	    }
-    
-	    // If no errors, execute status.php
-	    if(0 === count($errorsArray)){
-		header("Location: index.php?page=form2");
-		exit;
-	    }
-	    
-	    
+		
+		if(0 === preg_match($patternStr, $_POST['last'])){
+			$errorsArray['last'] = "Please enter a last name.";
+		}else{
+			$_SESSION['last']= $_POST['last'];
+		}
+		
+		if(0 === preg_match($patternEmail, $_POST['email'])){
+			$errorsArray['email'] = "Please enter a valid email.";
+		}else{
+			$_SESSION['email']= $_POST['email'];
+		}
+		
+		if(0 === preg_match($patternNum, $_POST['phone'])){
+			$errorsArray['phone'] = "Please enter a valid number.";
+		}else{
+			$_SESSION['phone']= $_POST['phone'];
+		}
+		
+		if($_POST['student']== "cs"){
+			if(0 == preg_match($patternSID, $_POST['studentId'])){
+				$errorsArray['sid'] = "Please enter your 9 digit student ID.";
+			}else{
+				$_SESSION['sid'] = $_POST['studentId'];
+				$_SESSION['student'] = "cs";
+			}
+		}else{
+			$_SESSION['student'] = "ns";
+		}
+
+		// If no errors, execute status.php
+		if(0 === count($errorsArray)){
+			header("Location: index.php?page=form2");
+			exit;
+		}		
 	}
-    }
-    //Displays error
-    function error($name){
-        global $errorsArray;
-        if($errorsArray[$name]){
-            return "<div class='formError'>". $errorsArray[$name]."</div>";
-        }
-    }
+}
+//Displays error
+function error($name){
+	global $errorsArray;
+	if($errorsArray[$name]){
+		return "<div class='formError'>". $errorsArray[$name]."</div>";
+	}
+}
 ?>
 
 <form role="form" method="post" class="form-horizontal" name="mockupbas" action="#" onsubmit="return(validateForm());">
@@ -98,7 +95,7 @@
 			<div id="sid" class="form-group">
 				<label for="studentId" class="col-sm-3 control-label">Student ID:</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="studentId" name="studentId" placeholder="must be 9 digits" maxlength="9" value="<?PHP echo $_SESSION['sid'];?>">
+					<input type="text" class="form-control" id="studentId" name="studentId" placeholder="must be 9 digits (SID not required for new students)" maxlength="9" value="<?PHP echo $_SESSION['sid'];?>">
 					<?php echo error('sid') ?>
 				</div>
 			</div>
