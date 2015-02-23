@@ -30,8 +30,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $_SESSION['transcript'] = "None";
                     }
                     
-                    if ($_POST['checkBox']=="agree"){
-                            $_SESSION['isChecked'] = $_POST['checkBox'];
+                    if ($_POST['checkbox']=="agree"){
+                            $_SESSION['isChecked'] = $_POST['checkbox'];
                     }else{
                         $errorsArray['checkbox'] = "Please agree to terms and conditions!";
                         $isValid = FALSE;
@@ -40,8 +40,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if($isValid){
                         header("Location: index.php?page=form5");
                             exit;
+                        echo"<pre>";
+                        var_dump($errorsArray);
+                        echo"</pre>";
                     } 
                     
+                    echo"<pre>";
+                    var_dump($_SESSION);
+                    var_dump($_POST['checkbox']);
+                    var_dump($errorsArray);
+                    var_dump($isValid);
+                    echo"</pre>";
                 
                 }
         }
@@ -56,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     function error($name){
         global $errorsArray;
         if($errorsArray[$name]){
-            return "<div class='formError'>". $errorsArray[$name]."</div>";
+            return "<div class='text-danger'>". $errorsArray[$name]."</div>";
         }
     }
 ?>
@@ -70,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
             <input type="radio" id="degree" name="degree" value="GED">High school diploma or GED</input>
             <br><input type="radio" id="degree" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">Associates degree (AA, AS, AAS, AAS-T)</input>
-            <br><input type="radio" id="degree" name="degree" value="Bachelor's degree">BDBachelor's degree</input>
+            <br><input type="radio" id="degree" name="degree" value="Bachelor's degree">Bachelor's degree</input>
             <br><input type="radio" id="degree" name="degree" value="Master's degree">Master's degree</input>
             <br><input type="radio" id="degree" name="degree" value="PHD">Ph.D.</input>
             <?php echo error('degree') ?>
@@ -86,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           <input type="file" class="btn btn-lg" name="fileToUpload" id="fileToUpload">
         
           <br>
-          <input type="checkbox" name="checkbox" required> I verify that the information submitted here is accurate and complete.</input>
+          <input type="checkbox" name="checkbox" value="agree" required> I verify that the information submitted here is accurate and complete.</input>
           <?php echo error('checkbox') ?>  
         
         <br>
