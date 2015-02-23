@@ -19,7 +19,14 @@ function yesnoCheck() {
          document.getElementById('nn').style.display = 'block';
            document.getElementById('uu').style.display = 'none';
     }
+    else if ((document.getElementById('ud').checked)) {
+     document.getElementById('ss').style.display = 'none';
+         document.getElementById('nn').style.display = 'none';
+           document.getElementById('uu').style.display = 'block';
+    }
+    
     document.getElementById('buttons').style.display = 'block';
+   
 }
 
 $(document).ready(main);

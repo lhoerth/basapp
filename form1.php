@@ -11,56 +11,56 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_POST['Submit'])){
         
-        //Validating POST
-        //Pattern to match
-        $patternStr = "/\S+/";
-        $patternNum = "/^[0-9\_]{7,10}/";
-        $patternEmail = "/.+@.+\..+/";
-        $patternSID = "/^[0-9\_]{9}/";
-        
-        if(0 === preg_match($patternStr, $_POST['first'])){
-            $errorsArray['first'] = "Please enter a first name.";
-            
-        }else{
-            $_SESSION['first']= $_POST['first'];
-        }
-        
-        if(0 === preg_match($patternStr, $_POST['last'])){
-            $errorsArray['last'] = "Please enter a last name.";
-        }else{
-            $_SESSION['last']= $_POST['last'];
-        }
-        
-        if(0 === preg_match($patternEmail, $_POST['email'])){
-            $errorsArray['email'] = "Please enter a valid email.";
-        }else{
-            $_SESSION['email']= $_POST['email'];
-        }
-        
-        if(0 === preg_match($patternNum, $_POST['phone'])){
-            $errorsArray['phone'] = "Please enter a valid number.";
-        }else{
-            $_SESSION['phone']= $_POST['phone'];
-        }
-        if($_POST['student']== "cs"){
-            if(0 == preg_match($patternSID, $_POST['studentId'])){
-                $errorsArray['sid'] = "Please enter your 9 digit student ID.";
-            }else{
-                $_SESSION['sid'] = $_POST['studentId'];
-                $_SESSION['student'] = "cs";
-            }
-        }else{
-            $_SESSION['student'] = "ns";
-        }
-
-        // If no errors, execute status.php
-        if(0 === count($errorsArray)){
-            header("Location: index.php?page=form2");
-            exit;
-        }
-        
-        
-    }
+	    //Validating POST
+	    //Pattern to match
+	    $patternStr = "/\S+/";
+	    $patternNum = "/^[0-9\_]{7,10}/";
+	    $patternEmail = "/.+@.+\..+/";
+	    $patternSID = "/^[0-9\_]{9}/";
+	    
+	    if(0 === preg_match($patternStr, $_POST['first'])){
+		$errorsArray['first'] = "Please enter a first name.";
+		
+	    }else{
+		$_SESSION['first']= $_POST['first'];
+	    }
+	    
+	    if(0 === preg_match($patternStr, $_POST['last'])){
+		$errorsArray['last'] = "Please enter a last name.";
+	    }else{
+		$_SESSION['last']= $_POST['last'];
+	    }
+	    
+	    if(0 === preg_match($patternEmail, $_POST['email'])){
+		$errorsArray['email'] = "Please enter a valid email.";
+	    }else{
+		$_SESSION['email']= $_POST['email'];
+	    }
+	    
+	    if(0 === preg_match($patternNum, $_POST['phone'])){
+		$errorsArray['phone'] = "Please enter a valid number.";
+	    }else{
+		$_SESSION['phone']= $_POST['phone'];
+	    }
+	    if($_POST['student']== "cs"){
+		if(0 == preg_match($patternSID, $_POST['studentId'])){
+		    $errorsArray['sid'] = "Please enter your 9 digit student ID.";
+		}else{
+		    $_SESSION['sid'] = $_POST['studentId'];
+		    $_SESSION['student'] = "cs";
+		}
+	    }else{
+		$_SESSION['student'] = "ns";
+	    }
+    
+	    // If no errors, execute status.php
+	    if(0 === count($errorsArray)){
+		header("Location: index.php?page=form2");
+		exit;
+	    }
+	    
+	    
+	}
     }
     //Displays error
     function error($name){
