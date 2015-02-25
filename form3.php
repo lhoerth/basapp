@@ -44,9 +44,6 @@ if(isset($_POST['Previous2'])){
     <title>Degree</title>
     
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -59,9 +56,9 @@ if(isset($_POST['Previous2'])){
                 <div class="container">
                         <div class="form-group text-center">
                                 <h3>Which degree are you interested in?</h3>
-                                <input type="radio" id="software" name="degree" value="software" onclick="javascript:yesnoCheck();"> Software Development </input>
-                                <input type="radio" id="network" name="degree" value="network"onclick="javascript:yesnoCheck();"> Network & Security </input>
-                                <input type="radio" id="ud" name="degree" value="ud" onclick="javascript:yesnoCheck();"> Undecided </input>
+                                <input type="radio" id="software" name="degree" value="software" onclick="javascript:yesnoCheck();" <?php echo ($_SESSION['degree'] === "software")?"checked":""; ?>> Software Development </input>
+                                <input type="radio" id="network" name="degree" value="network"onclick="javascript:yesnoCheck();" <?php echo ($_SESSION['degree'] === "network")?"checked":""; ?>> Network & Security </input>
+                                <input type="radio" id="ud" name="degree" value="ud" onclick="javascript:yesnoCheck();" <?php echo ($_SESSION['degree'] === "ud")?"checked":""; ?>> Undecided </input>
                             
                             
                           
@@ -135,7 +132,10 @@ if(isset($_POST['Previous2'])){
 
   </body>
 </html>
+
 <?php
+
+    
  //Flush buffer
  ob_flush();
  

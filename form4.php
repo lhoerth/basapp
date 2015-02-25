@@ -3,10 +3,15 @@ session_start();
  //*** Start the buffer
 ob_start();
 
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
+
 $errorsArray = array();
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
         if(isset($_POST['Submit3'])){
                 $isValid = TRUE;
+                $valid = TRUE;
     
                 //Checks the posts and if valid submits information
                 if (isset($_POST)){
@@ -24,11 +29,51 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         $isValid = FALSE;
                     }
                     
-                    if ($_POST['fileToUpload'] != ""){
-                            $_SESSION['transcript'] = $_POST['fileToUpload'];
-                    }else{
-                        $_SESSION['transcript'] = "None";
+                    
+                    /*
+                    *  Accept file information from html form, then move the
+                    *  file to designated folder.
+                    */
+                        
+                   
+                   //Define upload directory
+                   $dirName = "transcripts/";
+                   
+                   
+                   $newFile = $dirName.basename($_FILES["file"]["name"]);
+                       
+                   //Define valid file types
+                   $valid_types = array(
+                               "application/msword", // .doc
+                               "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+                               "application/pdf", // .pdf
+                               "text/plain", // .txt
+                               "image/png",
+                               "image/jpeg",
+                               "image/jpeg",
+                               "image/jpeg",
+                               "image/gif" 
+                       );
+                   
+                    
+                    //Check file size - 2 MB maximum
+                    if($_SERVER['CONTENT_LENGTH'] > 2000000) {
+                                echo "<p class='error'>File is too large to upload. Maximum file size is 2 MB.</p>";
+                    }	
+                    // Then check file type
+                    else if (in_array($_FILES['file']['type'], $valid_types)) {
+                                $_SESSION['error'] = "invalid type";
+                                // Check for duplicate file name
+                                if (file_exists($newFile))
+                                        echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
+                                else {
+                                    // No bugs, move file to upload directory
+                                    move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
+                                    echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
+                                }
                     }
+                           
+                    
                     
                     if ($_POST['checkbox']=="agree"){
                             $_SESSION['isChecked'] = $_POST['checkbox'];
@@ -38,28 +83,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     }
                     
                     if($isValid){
-                        header("Location: index.php?page=form5");
-                            exit;
-                        echo"<pre>";
-                        var_dump($errorsArray);
-                        echo"</pre>";
+                        //header("Location: index.php?page=form5");
+                          //  exit;
                     } 
                     
-                    echo"<pre>";
-                    var_dump($_SESSION);
-                    var_dump($_POST['checkbox']);
-                    var_dump($errorsArray);
-                    var_dump($isValid);
-                    echo"</pre>";
                 
                 }
-        }
-        
-        if(isset($_POST['Previous3'])){
+        }else if(isset($_POST['Previous3'])){
             header("Location: index.php?page=form3");
             exit;
         }
-}
+
 
 //Displays error
     function error($name){
@@ -69,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
 ?>
-        <form class="form-inline" method="post" action="#" onsubmit="return(validateForm());">
+        <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data" onsubmit="return(validateForm());">
 
 
        
@@ -92,7 +126,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           <h4>Transcripts</h4>
           <h5>You can upload an unofficial transcript here</h5>
        
-          <input type="file" class="btn btn-lg" name="fileToUpload" id="fileToUpload">
+          <input type="file" class="btn btn-lg" name="file" id="file">
         
           <br>
           <input type="checkbox" name="checkbox" value="agree" required> I verify that the information submitted here is accurate and complete.</input>

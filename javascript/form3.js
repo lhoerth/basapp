@@ -5,6 +5,7 @@ var main = function() {
     document.getElementById('nn').style.display = 'none';
     document.getElementById('uu').style.display = 'none';
     document.getElementById('buttons').style.display = 'none';
+
 }
 
 function yesnoCheck() {
