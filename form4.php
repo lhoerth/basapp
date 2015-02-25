@@ -3,9 +3,6 @@ session_start();
  //*** Start the buffer
 ob_start();
 
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
 
 $errorsArray = array();
 
@@ -69,6 +66,7 @@ $errorsArray = array();
                                 else {
                                     // No bugs, move file to upload directory
                                     move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
+                                    $_SESSION['transcript'] = $newFile;
                                     echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
                                 }
                     }
@@ -83,8 +81,8 @@ $errorsArray = array();
                     }
                     
                     if($isValid){
-                        //header("Location: index.php?page=form5");
-                          //  exit;
+                        header("Location: index.php?page=form5");
+                        exit;
                     } 
                     
                 
