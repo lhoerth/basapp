@@ -51,9 +51,9 @@ function isChecked($array, $value){
 				<div class="form-group text-center">
 						<h3>Which degree are you interested in?</h3>
 						<input type="radio" id="softwareBtn" name="degree" value="software" onclick="javascript:yesnoCheck();" <?php echo ($_SESSION['degree'] === "software")?"checked":""; ?>> 
-							<label for="softwareBtn"> Software Development </label>
+							<label for="softwareBtn"> Software Development </label><small> (<a class="spanInterest" data-toggle="modal" data-target="#SDModal">Learn More</a>)</small>&nbsp;&nbsp;
 						<input type="radio" id="networkBtn" name="degree" value="network" onclick="javascript:yesnoCheck();" <?php echo ($_SESSION['degree'] === "network")?"checked":""; ?>>
-							<label for="networkBtn"> Network &amp; Security </label>
+							<label for="networkBtn"> Network &amp; Security </label><small> (<a class="spanInterest" data-toggle="modal" data-target="#NASModal">Learn More</a>)</small>&nbsp;&nbsp;
 						<input type="radio" id="udBtn" name="degree" value="ud" onclick="javascript:yesnoCheck();" <?php echo ($_SESSION['degree'] === "ud")?"checked":""; ?>>
 							<label for="udBtn"> Undecided </label>
 					
@@ -131,6 +131,89 @@ function isChecked($array, $value){
 		</div>
 
 </form>
+
+<!-- Modal for SD-->
+<div class="modal fade" id="SDModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Software Development</h4>
+	  </div>
+	  <div class="modal-body">
+		<div>
+				<p><b>We prepare students for the real world by teaching the high demand skills that employers 
+				are seeking</b></p>
+				<ul>
+					<li>C, C++</li>
+					<li>Java</li>
+					<li>Linux Administration</li>
+					<li>Web Development & Design</li>
+				</ul>
+				<p><b>Gain hands on experience</b>
+				</p>
+				<ul>
+					<li>Learn how to code in our computer-labs</li>
+					<li>Receive one-on-one instructor assistance</li>
+					<li>Develop real websites for industry/community partners</li>
+					<li>Build a portfolio</li>
+				</ul>
+				<p><b>Make yourself invaluable with a well-rounded skill set</b></p>
+				<ul>
+					<li>Be self-sufficient</li>
+					<li>Create efficient and reliable programs</li>
+					<li>Maintain virtual development environments</li>
+				</ul>    
+				<a href="http://www.greenriver.edu/Documents/academic-programs/degrees/proftech/it_software_development_bas.pdf" target="_blank"><h6>Learn More</h6></a>
+			</div>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<!-- Modal for NAS -->
+<div class="modal fade" id="NASModal" tabindex="-1" role="dialog" aria-labelledby="NASModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="NASModalLabel">Network Security & Administration</h4>
+	  </div>
+	  <div class="modal-body">
+			<div>
+				<p><b>We prepare students for the real world by teaching the high demand skills that employers 
+				are seeking</b></p>
+				<ul>
+					<li>PC Repair</li>
+					<li>Windows Server Administration</li>
+					<li>Newtwork Security</li>
+				</ul>
+				<p><b>Gain hands on experience</b>
+				</p>
+				<ul>
+					<li>Work with active routing hardware in fully equipped labs</li>
+					<li>Receive one-on-one instructor assistance</li>
+					<li>Build a portfolio</li>
+				</ul>
+				
+				<p><b>Make yourself invaluable with a well-rounded skill set</b></p>
+				<ul>
+					<li>Install and configure servers</li>
+					<li>Monitor network traffic</li>
+					<li>Secure network devices</li>
+				</ul>
+				<a href="http://www.greenriver.edu/Documents/academic-programs/degrees/proftech/info_tech_network_admin_security_bas.pdf" target="_blank"><h6>Learn More</h6></a>
+			</div>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+  </div>
+</div>        
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="javascript/form3.js"></script>
