@@ -3,14 +3,18 @@ session_start();
  //*** Start the buffer
 ob_start();
 
+/* DEBUGGING - OUTPUT SESSION */
+echo "<pre>";
+print_r($_POST);
+print_r($_SESSION);
+echo "</pre>";
 
 $errorsArray = array();
 
         if(isset($_POST['Submit3'])){
                 $isValid = TRUE;
-                $valid = TRUE;
     
-                //Checks the posts and if valid submits information
+                // Validate POST; submit if valid
                 if (isset($_POST)){
                     if ($_POST['degree'] != ""){
                         $_SESSION['lvlEducation'] = $_POST['degree'];
@@ -65,6 +69,10 @@ $errorsArray = array();
                                         echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
                                 else {
                                     // No bugs, move file to upload directory
+									/* DEBUGGING */
+									echo "<pre>";
+									print_r($_FILES['file']);
+									echo "</pre>";
                                     move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
                                     $_SESSION['transcript'] = $newFile;
                                     echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
@@ -101,7 +109,7 @@ $errorsArray = array();
         }
     }
 ?>
-        <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data" onsubmit="return(validateForm());">
+        <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data">
 
 
        

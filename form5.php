@@ -3,9 +3,13 @@
 session_start();
 //*** Start the buffer
 ob_start();
-echo"<prev>";
-var_dump($_SESSION);
-echo"</prev>";
+
+/* DEBUGGING - OUTPUT SESSION */
+echo "<pre>";
+print_r($_POST);
+print_r($_SESSION);
+echo "</pre>";
+
 ?>
 <div class="container">
 

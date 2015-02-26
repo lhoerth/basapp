@@ -4,7 +4,11 @@
     //*** Start the buffer
     ob_start();
     
-    
+    /* DEBUGGING - OUTPUT SESSION */
+	echo "<pre>";
+	print_r($_POST);
+	print_r($_SESSION);
+	echo "</pre>";
 
 	//Goes back to previous page
 	if(isset($_POST['Previous1'])){
@@ -30,17 +34,6 @@
 		exit;
 	}
 ?>
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>BAS More Info Form</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-</head>
-    
-<body>
         <form class="form-horizontal" method="post" action="#" role="form" >
             <div class="container">
 				
@@ -68,9 +61,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
-    
-</body>
-</html>
+
 <?php
  //Flush buffer
  ob_flush();

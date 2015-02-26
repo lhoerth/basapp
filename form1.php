@@ -6,6 +6,12 @@ ob_start();
 
 $errorsArray = array();
 
+/* DEBUGGING - OUTPUT SESSION */
+echo "<pre>";
+print_r($_POST);
+print_r($_SESSION);
+echo "</pre>";
+
 
 //Check if POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -68,7 +74,7 @@ function error($name){
 }
 ?>
 
-<form role="form" method="post" class="form-horizontal" name="mockupbas" action="#" onsubmit="return(validateForm());">
+<form role="form" method="post" class="form-horizontal" name="mockupbas" action="#">
 	<div class="container">
 		<div class="form-group text-center">
 			<h3>Please select one:</h3>
