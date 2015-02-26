@@ -4,7 +4,7 @@
     //*** Start the buffer
     ob_start();
     
-    /* DEBUGGING - OUTPUT SESSION */
+    /* //DEBUGGING - OUTPUT SESSION 
 	echo "<pre>";
 	print_r($_POST);
 	print_r($_SESSION);
