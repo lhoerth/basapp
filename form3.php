@@ -76,8 +76,10 @@ function isChecked($array, $value){
 							<br>
 							<input type="checkbox" id="121" name="softReq[]" value="121" <?php echo isChecked('softReq', '121');?>>
 								<label for="121">IT 121:  HTML/CSS, or equivalent</label>
-							<label for="softNote">Comments:</label>
-								<textarea id="softNote" name="softReq[]" class="form-control" cols="25" rows="8" maxlength="8191" placeholder="Maximum ~8000 characters. . ."><?php if (isset($_SESSION['softReq'])) echo end($_SESSION['softReq']); ?></textarea>
+							<br>
+							<br>
+								<label for="softNote">Comments:</label>
+							<textarea id="softNote" name="softReq[]" class="form-control" cols="25" rows="8" maxlength="8191" placeholder="Maximum ~8000 characters. . ."><?php if (isset($_SESSION['softReq'])) echo end($_SESSION['softReq']); ?></textarea>
 							<br>
 							
 						</div>
@@ -103,8 +105,10 @@ function isChecked($array, $value){
 								<br>
 								<input type="checkbox" id="240" name="netReq[]" value="240" <?php echo isChecked('netReq', '240');?>> 
 									<label for="240">IT 240 or 70-411 Microsoft MCP</label>
-								<label for="netNote">Comments:</label>
-										<textarea id="netNote" class="form-control" name="netReq[]" cols="25" rows="8" maxlength="8191" placeholder="Maximum ~8000 characters. . ."><?php if (isset($_SESSION['netReq'])) echo end($_SESSION['netReq']); ?></textarea>
+								<br>
+								<br>
+									<label for="netNote">Comments:</label>
+								<textarea id="netNote" class="form-control" name="netReq[]" cols="25" rows="8" maxlength="8191" placeholder="Maximum ~8000 characters. . ."><?php if (isset($_SESSION['netReq'])) echo end($_SESSION['netReq']); ?></textarea>
 								<br>
 							  
 						</div>
