@@ -109,34 +109,34 @@ $errorsArray = array();
         }
     }
 ?>
-        <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data">
+<form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data">
+    <div class="container">
+        <h4>Please select the highest that you have achieved</h4>        
+		<input type="radio" id="hs" name="degree" value="GED">
+			<label for="hs">High school diploma or GED</label>
+		<br><input type="radio" id="aDeg" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">
+			<label for="aDeg">Associates degree (AA, AS, AAS, AAS-T)</label>
+		<br><input type="radio" id="bDeg" name="degree" value="Bachelor's degree">
+			<label for="bDeg">Bachelor's degree</label>
+		<br><input type="radio" id="mDeg" name="degree" value="Master's degree">
+			<label for="mDeg">Master's degree</label>
+		<br><input type="radio" id="phd" name="degree" value="PHD">
+			<label for="phd">Ph.D.</label>
+		<?php echo error('degree') ?>          
 
-
+        <h4>Credits</h4>
+        <h5>Please enter the number of credits you have earned thus far</h5>
+        <input type="number" class="form-control" id="collegeCredits" name="collegeCredits"  min= 0 max= 999 value = 0 required>
+        <?php echo error('collegeCredits') ?>
+        <h4>Transcripts</h4>
+        <h5>You can upload an unofficial transcript here</h5>
        
-
-      <div class="container">
-          <h4>Please select the highest that you have achieved</h4>
+        <input type="file" class="btn btn-lg" name="file" id="file">
         
-            <input type="radio" id="degree" name="degree" value="GED">High school diploma or GED</input>
-            <br><input type="radio" id="degree" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">Associates degree (AA, AS, AAS, AAS-T)</input>
-            <br><input type="radio" id="degree" name="degree" value="Bachelor's degree">Bachelor's degree</input>
-            <br><input type="radio" id="degree" name="degree" value="Master's degree">Master's degree</input>
-            <br><input type="radio" id="degree" name="degree" value="PHD">Ph.D.</input>
-            <?php echo error('degree') ?>
-          
-
-          <h4>Credits</h4>
-          <h5>Please enter the number of credits you have earned thus far</h5>
-          <input type="number" class="form-control" id="collegeCredits" name="collegeCredits"  min= 0 max= 999 value = 0 required>
-          <?php echo error('collegeCredits') ?>
-          <h4>Transcripts</h4>
-          <h5>You can upload an unofficial transcript here</h5>
-       
-          <input type="file" class="btn btn-lg" name="file" id="file">
-        
-          <br>
-          <input type="checkbox" name="checkbox" value="agree" required> I verify that the information submitted here is accurate and complete.</input>
-          <?php echo error('checkbox') ?>  
+        <br>
+        <input type="checkbox" id="agree" name="checkbox" value="agree" required>
+			<label for="agree"> I verify that the information submitted here is accurate and complete.</label>
+        <?php echo error('checkbox') ?>  
         
         <br>
         <div class="row">
@@ -145,17 +145,11 @@ $errorsArray = array();
             <button class="col-md-2 col-md-offset-8 btn btn-primary" name='Submit3'>Continue</button>
         </div>
     </div>
-        
-        
-
-    </form>
-
-
-
-    </div> <!-- /container -->
+</form>
   
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
 <?php
          //Flush buffer
         ob_flush();
