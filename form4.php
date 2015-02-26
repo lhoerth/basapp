@@ -8,6 +8,7 @@ echo "<pre>";
 print_r($_POST);
 print_r($_SESSION);
 echo "</pre>";
+*/
 
 $errorsArray = array();
 
@@ -69,10 +70,6 @@ $errorsArray = array();
                                         echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
                                 else {
                                     // No bugs, move file to upload directory
-									/* DEBUGGING */
-									echo "<pre>";
-									print_r($_FILES['file']);
-									echo "</pre>";
                                     move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
                                     $_SESSION['transcript'] = $newFile;
                                     echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
@@ -112,7 +109,7 @@ $errorsArray = array();
 <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data">
     <div class="container">
         <h4>Please select the highest that you have achieved</h4>        
-		<input type="radio" id="hs" name="degree" value="GED">
+		<input type="radio" id="hs" name="degree" value="GED" required>
 			<label for="hs">High school diploma or GED</label>
 		<br><input type="radio" id="aDeg" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">
 			<label for="aDeg">Associates degree (AA, AS, AAS, AAS-T)</label>

@@ -9,6 +9,7 @@
 	print_r($_POST);
 	print_r($_SESSION);
 	echo "</pre>";
+	*/
 
 	//Goes back to previous page
 	if(isset($_POST['Previous1'])){

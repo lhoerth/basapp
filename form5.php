@@ -9,6 +9,7 @@ echo "<pre>";
 print_r($_POST);
 print_r($_SESSION);
 echo "</pre>";
+*/
 
 ?>
 <div class="container">
