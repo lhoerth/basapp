@@ -65,7 +65,14 @@ if(isset($_POST['Final'])){
                 
                 $education = $_SESSION['lvlEducation'];
                 $credits = $_SESSION['collegeCredits'];
-                $transcript = $_SESSION['transcript'];
+                
+		//Transcript checker
+		if(isset($_SESSION['transcript'])){
+		  $transcript = $_SESSION['transcript'];
+		} else {
+		  $transcript = "NULL";
+		}
+		
                 $date = date(DATE_ATOM);
                 
             
@@ -82,7 +89,7 @@ if(isset($_POST['Final'])){
                 $statement->bindParam(':transcript', $transcript, PDO::PARAM_STR);
                 $statement->bindParam(':date', $date, PDO::PARAM_STR);
 
-               $statement->execute();
+               //$statement->execute();
     
     //If we want to email school with student info individually
     /*if($_SESSION['degree'] == "software"){
@@ -114,9 +121,10 @@ if(isset($_POST['Final'])){
         <h1>'.$student.' student '.$degree.'</h1>
         
         
+        
     ';*/
     
-    /*
+    
     //Email sent based on student
     $to = $_SESSION['email'];
     $first_name = $_SESSION['first'];
@@ -166,18 +174,21 @@ if(isset($_POST['Final'])){
         <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" /></a>
     <br>
     <br>
-    <a href="nextsteps.php" target="_blank"><em>Info:</>What To Do Next?</a>  
+    <a href="caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info:</em>What To Do Next?</a>  
     </body>
     </html>
     ';
-    
+    /*
       if($_SESSION['student'] == "cs"){
         mail($to,$subject,$messageCurrentStudent,$headers);
     } else{
         mail($to,$subject,$messageNewStudent,$headers);
     }
-    */
-    }
+    
+    header("Location: thankyou.html");
+    exit;
+*/
+}
     
  //Flush buffer
  ob_flush();
