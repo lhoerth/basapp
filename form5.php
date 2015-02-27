@@ -9,7 +9,7 @@ echo"</prev>";
 ?>
 <div class="container">
     <h3>Summary</h3>
-    <p>Please verify your information and submit</p>
+    <p>Please verify your information is correct and click submit</p>
     <?php
     echo "<b>First: </b>". $_SESSION['first'];
     echo "<br><b>Last: </b>". $_SESSION['last'];
@@ -54,13 +54,16 @@ echo"</prev>";
    }
    
    
-         if(isset($_SESSION['softReq'])){
+   
+   
+if(isset($_SESSION['softReq'])){
     $require = "<br><b>Prequisites Completed:</b>";
     foreach($_SESSION['softReq'] as $info){
         $require .= $info;
     }
     echo $require;
-         }
+   }
+   
     
    
    if(isset($_SESSION['comment'])){
@@ -73,16 +76,9 @@ echo "<br><b>Credits: </b>" . $_SESSION['collegeCredits'];
 
    
    
- 
-   
-   
-   
-    
-    
-    
-    
-    ?>
-    
+?>
+
+<br><button action='submitData.php'>Submit</button>    
     
     
     
