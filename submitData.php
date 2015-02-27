@@ -53,9 +53,9 @@ if(isset($_POST['Final'])){
                 //Prereqs determined based on degree wanting.
                 $prereqs;
                 if($_SESSION['degree'] == 'software'){
-		    $prereqs .= $_SESSION['softReq']; 				
+		    $prereqs .= implode(",", $_SESSION['softReq']); 				
 		}else if($_SESSION['degree']== 'network'){
-		    $prereqs .= $_SESSION['netReq']; 
+		    $prereqs .= implode(",", $_SESSION['netReq']); 
 		}else if($_SESSION['degree']== 'ud'){
 		    $prereqs .= $_SESSION['comment'];
 		} else {
