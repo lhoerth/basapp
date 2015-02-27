@@ -134,7 +134,7 @@ $errorsArray = array();
 
         <h4>Credits</h4>
         <h5>Please enter the number of credits you have earned thus far</h5>
-        <input type="number" class="form-control" id="collegeCredits" name="collegeCredits"  min= 0 max= 999 value = 0 required>
+        <input type="number" class="form-control" id="collegeCredits" name="collegeCredits"  min= 0 max= 999 value=<?php echo isset($_SESSION['collegeCredits'])?$_SESSION['collegeCredits']:0;?> required>
         <?php echo error('collegeCredits') ?>
         <h4>Transcripts</h4>
         <h5>You can upload an unofficial transcript here</h5>
