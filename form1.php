@@ -86,14 +86,14 @@ function error($name){
 				<label for="ns">I am a new student</label>
 		</div>                 
 		<div class="show form-group">
-			<label for="first" class="col-sm-3 control-label">First name:</label>
+			<label for="first" class="col-sm-3 control-label">First Name:</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" id="first" name="first" pattern="[a-zA-Z]{0,50}" placeholder="ex. John" maxlength=50 value="<?PHP echo htmlspecialchars($_SESSION['first']); ?>" required >
 				<?php echo error('first') ?>
 			</div>
 		</div>
 		<div class="show form-group">
-			<label for="last" class="col-sm-3 control-label">Last name:</label>
+			<label for="last" class="col-sm-3 control-label">Last Name:</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" id="last" name="last" pattern="[a-zA-Z]{0,50}" placeholder="ex. Smith" maxlength=50 value="<?PHP echo htmlspecialchars($_SESSION['last']); ?>" required >
 				<?php echo error('last') ?>
