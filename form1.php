@@ -6,7 +6,7 @@ ob_start();
 
 $errorsArray = array();
 
-/* //DEBUGGING - OUTPUT SESSION */
+/* //DEBUGGING - OUTPUT SESSION 
 echo "<pre>";
 print_r($_POST);
 print_r($_SESSION);
