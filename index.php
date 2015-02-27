@@ -46,11 +46,13 @@
 			  foreach ($options as $key => $value) {
 				echo "<li ";
 				if ($_GET['page'] == $key){
-				  echo "class='active' ";
+				  echo "class='active' >";
 				}else{
-				  echo "class='done' "; 
+				  echo "class='done' >"; 
 				};
-				echo "><span><a href='?page=".$key."'>";
+				
+				echo "<span>";
+				echo "<a href='?page=".$key."'>";
 				echo ucwords($value);
 				echo "</a></span></li>";
 			  }

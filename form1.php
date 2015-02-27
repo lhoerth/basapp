@@ -6,17 +6,17 @@ ob_start();
 
 $errorsArray = array();
 
-/* //DEBUGGING - OUTPUT SESSION 
+/* //DEBUGGING - OUTPUT SESSION */
 echo "<pre>";
 print_r($_POST);
 print_r($_SESSION);
 echo "</pre>";
-*/
+
 
 
 //Check if POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	if(isset($_POST['Submit'])){	
+	if(isset($_POST['Submit1'])){	
 		//Validating POST
 		//Pattern to match
 		$patternStr = "/\S+/";
@@ -61,6 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 		// If no errors, execute status.php
 		if(0 === count($errorsArray)){
+			$_SESSION['Submit1'] = $_POST['Submit1'];
 			header("Location: index.php?page=form2");
 			exit;
 		}		
@@ -122,7 +123,7 @@ function error($name){
 			</div>
 		</div>
 		<br>			
-		<button class="col-md-2 col-md-offset-10 btn btn-primary" name='Submit'>Continue</button>
+		<input type="Submit" class="col-md-2 col-md-offset-10 btn btn-primary" name='Submit1' value="Continue">
 	</div>
 </form>
 <script src="javascript/contact.js"></script>      

@@ -12,12 +12,13 @@ echo "</pre>";
 
 
 
-if(isset($_POST['Previous2'])){
-	header("Location: index.php?page=form2");
-	exit;
-}
+	//Goes back to previous page
+	if(!isset($_SESSION['Submit2'])){
+		 header("Location: index.php?page=form1");
+		 exit;
+	}
 
-if(isset($_POST['Submit2'])){
+if(isset($_POST['Submit3'])){
 	if(isset($_POST['degree'])){
 		$_SESSION['degree'] = $_POST['degree'];
 		if($_SESSION['degree'] == 'software'){
@@ -33,7 +34,7 @@ if(isset($_POST['Submit2'])){
 				$_SESSION['comment'] = $_POST['comment'];
 			}
 		}
-		
+		$_SESSION['Submit3'] = $_POST['Submit3'];
 		header("Location: index.php?page=form4");
 		exit;
 	}		   
@@ -126,7 +127,7 @@ function isChecked($array, $value){
 				</div>
 				<div class="row" id="buttons">
 						<button type="submit" class="col-md-2 btn btn-primary" name="Previous2">Previous</button>
-						<button type="submit" class="col-md-2 col-md-offset-8 btn btn-primary" name="Submit2">Continue</button>
+						<button type="submit" class="col-md-2 col-md-offset-8 btn btn-primary" name="Submit3">Continue</button>
 				</div>
 		</div>
 

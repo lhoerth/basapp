@@ -11,6 +11,12 @@ print_r($_SESSION);
 echo "</pre>";
 */
 
+//Goes back to previous page
+	if(!isset($_SESSION['Submit4'])){
+		 header("Location: index.php?page=form1");
+		 exit;
+	}
+
 ?>
 <div class="container">
 

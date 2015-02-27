@@ -10,91 +10,95 @@ print_r($_SESSION);
 echo "</pre>";
 */
 
+//Goes back to previous page
+	if(!isset($_SESSION['Submit3'])){
+		 header("Location: index.php?page=form1");
+		 exit;
+	}
+	
 $errorsArray = array();
 
-        if(isset($_POST['Submit3'])){
-                $isValid = TRUE;
-    
-                // Validate POST; submit if valid
-                if (isset($_POST)){
-                    if ($_POST['degree'] != ""){
-                        $_SESSION['lvlEducation'] = $_POST['degree'];
-                    } else {
-                        $errorsArray['degree'] = "Education not selected!";
-                        $isValid = FALSE;
-                    }
-                    
-                    if ($_POST['collegeCredits'] >= 0 && $_POST['collegeCredits'] <= 999){
-                        $_SESSION['collegeCredits'] = $_POST['collegeCredits'];
-                    } else {
-                        $errorsArray['collegeCredits'] = "Credits enter are invalid!";
-                        $isValid = FALSE;
-                    }
-                    
-                    
-                    /*
-                    *  Accept file information from html form, then move the
-                    *  file to designated folder.
-                    */
-                        
-                   
-                   //Define upload directory
-                   $dirName = "transcripts/";
-                   
-                   
-                   $newFile = $dirName.basename($_FILES["file"]["name"]);
-                       
-                   //Define valid file types
-                   $valid_types = array(
-                               "application/msword", // .doc
-                               "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
-                               "application/pdf", // .pdf
-                               "text/plain", // .txt
-                               "image/png",
-                               "image/jpeg",
-                               "image/jpeg",
-                               "image/jpeg",
-                               "image/gif" 
-                       );
-                   
-                    
-                    //Check file size - 2 MB maximum
-                    if($_SERVER['CONTENT_LENGTH'] > 2000000) {
-                                echo "<p class='error'>File is too large to upload. Maximum file size is 2 MB.</p>";
-                    }	
-                    // Then check file type
-                    else if (in_array($_FILES['file']['type'], $valid_types)) {
-                                $_SESSION['error'] = "invalid type";
-                                // Check for duplicate file name
-                                if (file_exists($newFile))
-                                        echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
-                                else {
-                                    // No bugs, move file to upload directory
-                                    move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
-                                    $_SESSION['transcript'] = $newFile;
-                                    echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
-                                }
-                    }
-                           
-                    
-                    
-                    if ($_POST['checkbox']=="agree"){
-                            $_SESSION['isChecked'] = $_POST['checkbox'];
-                    }else{
-                        $errorsArray['checkbox'] = "Please agree to terms and conditions!";
-                        $isValid = FALSE;
-                    }
-                    
-                    if($isValid){
-                        header("Location: index.php?page=form5");
-                        exit;
-                    } 
-                    
-                
-                }
-        }else if(isset($_POST['Previous3'])){
-            header("Location: index.php?page=form3");
-            exit;
+        if(isset($_POST['Submit4'])){
+			$isValid = TRUE;
+
+			// Validate POST; submit if valid
+			if (isset($_POST)){
+				if ($_POST['degree'] != ""){
+					$_SESSION['lvlEducation'] = $_POST['degree'];
+				} else {
+					$errorsArray['degree'] = "Education not selected!";
+					$isValid = FALSE;
+				}
+				
+				if ($_POST['collegeCredits'] >= 0 && $_POST['collegeCredits'] <= 999){
+					$_SESSION['collegeCredits'] = $_POST['collegeCredits'];
+				} else {
+					$errorsArray['collegeCredits'] = "Credits enter are invalid!";
+					$isValid = FALSE;
+				}
+				
+				
+				/*
+				*  Accept file information from html form, then move the
+				*  file to designated folder.
+				*/
+					
+			   
+			   //Define upload directory
+			   $dirName = "transcripts/";
+			   
+			   
+			   $newFile = $dirName.basename($_FILES["file"]["name"]);
+				   
+			   //Define valid file types
+			   $valid_types = array(
+						   "application/msword", // .doc
+						   "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+						   "application/pdf", // .pdf
+						   "text/plain", // .txt
+						   "image/png",
+						   "image/jpeg",
+						   "image/jpeg",
+						   "image/jpeg",
+						   "image/gif" 
+				   );
+			   
+				
+				//Check file size - 2 MB maximum
+				if($_SERVER['CONTENT_LENGTH'] > 2000000) {
+							echo "<p class='error'>File is too large to upload. Maximum file size is 2 MB.</p>";
+				}	
+				// Then check file type
+				else if (in_array($_FILES['file']['type'], $valid_types)) {
+							$_SESSION['error'] = "invalid type";
+							// Check for duplicate file name
+							if (file_exists($newFile))
+									echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
+							else {
+								// No bugs, move file to upload directory
+								move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
+								$_SESSION['transcript'] = $newFile;
+								echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
+							}
+				}
+					   
+				
+				
+				if ($_POST['checkbox']=="agree"){
+						$_SESSION['isChecked'] = $_POST['checkbox'];
+				}else{
+					$errorsArray['checkbox'] = "Please agree to terms and conditions!";
+					$isValid = FALSE;
+				}
+				
+				if($isValid){
+					$_SESSION['Submit4'] = $_POST['Submit4'];
+					header("Location: index.php?page=form5");
+					exit;
+				} 
+				
+			
+			}
         }
 
 
@@ -139,7 +143,7 @@ $errorsArray = array();
         <div class="row">
             <br>
             <button class="col-md-2 btn btn-primary" name='Previous3'>Previous</button>
-            <button class="col-md-2 col-md-offset-8 btn btn-primary" name='Submit3'>Continue</button>
+            <button class="col-md-2 col-md-offset-8 btn btn-primary" name='Submit4'>Continue</button>
         </div>
     </div>
 </form>
