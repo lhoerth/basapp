@@ -5,7 +5,88 @@ session_start();
 ob_start();
 
 if(isset($_POST['submit'])){
-    if($_SESSION['degree'] == "software"){
+    
+      include db.php;
+    
+   $sql = "INSERT INTO `Student_Info`(`First`, `Last`, `Email`, `Phone`, `Degree`, `Sid`, `Status`, `Prereqs`, `Education`, `Credits`, `Transcript`,`requestedDate`) VALUES (:key, :first, :last, :email, :phone, :degree, :sid, :status, :prereqs, :education, :credits, :transcript, :date)";
+
+                                        
+                
+              $statement = $dbh->prepare($sql);
+                
+                
+               
+                $first = $_SESSION['first'];
+                $last = $_SESSION['last'];
+                $email = $_SESSION['email'];
+                $phone = $_SESSION['phone'];
+                $degree = $_SESSION['degree'];
+                
+                if($_SESSION['student']== "cs"){
+                  $sid = $_SESSION['sid'];
+                }else {
+                  $sid = "NA"; //Not applicable
+                }
+                
+                //Initialize $status
+                $hasStatus = FALSE;
+                $status;
+                
+                if(isset($_SESSION['veteran'])){
+		    $status .= $_SESSION['veteran'];
+                    $hasStatus = TRUE;
+		}
+		if(isset($_SESSION['is'])){
+		    $status .= $_SESSION['is'];
+                    $hasStatus = TRUE;
+		}
+		if(isset($_SESSION['rs'])){
+		    $status .= $_SESSION['rs'];
+                    $hasStatus = TRUE;
+		}
+                
+                if($hasStatus == FALSE){
+                  $status .= "NA";
+                }
+                
+                
+                //Prereqs determined based on degree wanting.
+                $prereqs;
+                if($_SESSION['degree'] == 'software'){
+		    $prereqs .= $_SESSION['softReq']; 				
+		}else if($_SESSION['degree']== 'network'){
+		    $prereqs .= $_SESSION['netReq']; 
+		}else if($_SESSION['degree']== 'ud'){
+		    $prereqs .= $_SESSION['comment'];
+		} else {
+                    $prereqs .= "None";
+                }
+                
+                
+                $education = $_SESSION['lvlEducation'];
+                $credits = $_SESSION['collegeCredits'];
+                $transcript = $_SESSION['transcript'];
+                $date = date(DATE_ATOM);
+                
+                
+                $statement->bindParam(':key', $key, PDO::PARAM_INT);
+                $statement->bindParam(':first', $first, PDO::PARAM_STR);
+                $statement->bindParam(':last', $last, PDO::PARAM_STR);
+                $statement->bindParam(':email', $email, PDO::PARAM_STR);
+                $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
+                $statement->bindParam(':degree', $degree, PDO::PARAM_STR);
+                $statement->bindParam(':sid', $sid, PDO::PARAM_INT);
+                $statement->bindParam(':status', $status, PDO::PARAM_STR);
+                $statement->bindParam(':prereqs', $prereqs, PDO::PARAM_STR);
+                $statement->bindParam(':education', $education, PDO::PARAM_STR);
+                $statement->bindParam(':credits', $credits, PDO::PARAM_INT);
+                $statement->bindParam(':transcript', $transcript, PDO::PARAM_STR);
+                $statement->bindParam(':date', $date, PDO::PARAM_STR);
+
+               $statement->execute();
+    
+    //If we want to email school with student info individually
+    /*if($_SESSION['degree'] == "software"){
         $toTheCollege = "casemorris@hotmail.com"; //Email to someone managing in software dev BAS
         $degree = "inquiring about a BAS in Software Development.";
     } else if($_SESSION['degree'] == "netork"){
@@ -33,8 +114,10 @@ if(isset($_POST['submit'])){
     <body>
         <h1>'.$student.' student '.$degree.'</h1>
         
-    ';
+        
+    ';*/
     
+    /*
     //Email sent based on student
     $to = $_SESSION['email'];
     $first_name = $_SESSION['first'];
@@ -94,7 +177,7 @@ if(isset($_POST['submit'])){
     } else{
         mail($to,$subject,$messageNewStudent,$headers);
     }
-    
+    */
     }
     
  //Flush buffer
