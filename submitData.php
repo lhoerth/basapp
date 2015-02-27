@@ -92,7 +92,7 @@ if(isset($_POST['Final'])){
                $statement->execute();
     
     //If we want to email school with student info individually
-    /*if($_SESSION['degree'] == "software"){
+    if($_SESSION['degree'] == "software"){
         $toTheCollege = "casemorris@hotmail.com"; //Email to someone managing in software dev BAS
         $degree = "inquiring about a BAS in Software Development.";
     } else if($_SESSION['degree'] == "netork"){
@@ -119,13 +119,13 @@ if(isset($_POST['Final'])){
     <html>
     <body>
         <h1>'.$student.' student '.$degree.'</h1>
-        <a href="caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank"><em>Info:</em>What To Do Next?</a>
+        <a href="caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank">View Applicants</a>
         
         
     ';
     mail($toTheCollege,$subjectToTheCollege,$messageAboutStudent,$headersToTheCollege);
     
-    */
+    
     
     
     //Email sent based on student
@@ -160,11 +160,7 @@ if(isset($_POST['Final'])){
     ';
     
     $messageNewStudent = '
-	<!DOCTYPE html>
     <html>
-	<head>
-		<title>Bachelor\'s Degree Application</title>
-	</head>
     <body>
     <h3>Hello '.$first_name.' '.$last_name.':</h3>
     <p>Thank you for your application to Green River\'s BAS program. An advisor will contact you within 2 business days.</p>
@@ -181,7 +177,7 @@ if(isset($_POST['Final'])){
         <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" /></a>
     <br>
     <br>
-    <a href="caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"> <em> Info: </em> What To Do Next?</a>  
+    <a href="caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info:</em>What To Do Next?</a>  
     </body>
     </html>
     ';
