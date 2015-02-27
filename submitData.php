@@ -30,10 +30,11 @@ if(isset($_POST['submit'])){
         
     ';
     
-    $from = $_POST['email']; // sender's Email address
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $subject = "Form submission";
+    //Email sent based on student
+    $to = $_SESSION['email'];
+    $first_name = $_SESSION['first'];
+    $last_name = $_SESSION['last'];
+    $subject = "Form Submitted";
     $subject2 = "Copy of your form submission";
     
     $headers = 'MIME-Version: 1.0'."\r\n";
@@ -83,15 +84,11 @@ if(isset($_POST['submit'])){
     </html>
     ';
     
-    $message2 = "THIS IS A SAMPLE FORM EMAIL SENT MESSAGE " . $first_name . "\n\n" . $_POST['message'];
-    
-    $headers = 'MIME-Version: 1.0'."\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    //$headers .= "From:" . $from. "\r\n";
-    $headers2 = "From:" . $to;
-    mail($to,$subject,$messageNewStudent,$headers);
-    //mail($from,$subject2,$message2,$headers2); // message to sender-copy
-    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
+      if($_SESSION['student'] == "cs"){
+        mail($to,$subject,$messageCurrentStudent,$headers);
+    } else{
+        mail($to,$subject,$messageNewStudent,$headers);
+    }
     
     }
 ?>
