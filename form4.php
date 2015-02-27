@@ -119,7 +119,7 @@ $errorsArray = array();
 <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data">
     <div class="container">
         <h4>Please select the highest that you have achieved</h4>        
-		<input type="radio" id="hs" name="degree" value="GED" required>
+		<input type="radio" id="hs" name="degree" value="HS/GED" required>
 			<label for="hs">High school diploma or GED</label>
 		<br><input type="radio" id="aDeg" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">
 			<label for="aDeg">Associates degree (AA, AS, AAS, AAS-T)</label>
