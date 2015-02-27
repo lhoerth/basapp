@@ -10,10 +10,16 @@ print_r($_SESSION);
 echo "</pre>";
 */
 
-//Goes back to previous page
+	//Goes back to first page if not visited in order
 	if(!isset($_SESSION['Submit3'])){
 		 header("Location: index.php?page=form1");
 		 exit;
+	}
+	
+	// go back to previous page if previous button clicked
+	if(isset($_POST['Previous3'])){
+		header("Location: index.php?page=form3");
+		exit;
 	}
 	
 $errorsArray = array();

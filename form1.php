@@ -11,7 +11,7 @@ echo "<pre>";
 print_r($_POST);
 print_r($_SESSION);
 echo "</pre>";
-
+*/
 
 
 //Check if POST
@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		}
 
 		// If no errors, execute status.php
-		if(0 === count($errorsArray)){
+		if(0 === count($errorsArray) && isset($_POST['Submit1'])){
 			$_SESSION['Submit1'] = $_POST['Submit1'];
 			header("Location: index.php?page=form2");
 			exit;

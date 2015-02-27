@@ -12,10 +12,16 @@ echo "</pre>";
 
 
 
-	//Goes back to previous page
+	//Goes back to first page if not visited in order
 	if(!isset($_SESSION['Submit2'])){
 		 header("Location: index.php?page=form1");
 		 exit;
+	}
+	
+	// go back to previous page if previous button clicked
+	if(isset($_POST['Previous2'])){
+		header("Location: index.php?page=form2");
+		exit;
 	}
 
 if(isset($_POST['Submit3'])){

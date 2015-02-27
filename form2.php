@@ -4,16 +4,23 @@
     //*** Start the buffer
     ob_start();
     
-    /* //DEBUGGING - OUTPUT SESSION */
+    /* //DEBUGGING - OUTPUT SESSION 
 	echo "<pre>";
 	print_r($_POST);
 	print_r($_SESSION);
 	echo "</pre>";
+	*/
 	
-	//Goes back to previous page if not submitted
+	//Goes back to form1 page if not submitted
 	if(!isset($_SESSION['Submit1'])){
 		 header("Location: index.php?page=form1");
 		 exit;
+	}
+	
+	// go back to previous page if previous button clicked
+	if(isset($_POST['Previous1'])){
+		header("Location: index.php?page=form1");
+		exit;
 	}
 
 	//Submits data to session and moves to next page 
