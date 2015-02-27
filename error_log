@@ -50,3 +50,9 @@
 [23-Feb-2015 09:44:56 America/Chicago] PHP Warning:  include(form5.php): failed to open stream: No such file or directory in /home/caseym/public_html/328/test/index.php on line 64
 [23-Feb-2015 09:44:56 America/Chicago] PHP Warning:  include(form5.php): failed to open stream: No such file or directory in /home/caseym/public_html/328/test/index.php on line 64
 [23-Feb-2015 09:44:56 America/Chicago] PHP Warning:  include(): Failed opening 'form5.php' for inclusion (include_path='.:/opt/php54/lib/php') in /home/caseym/public_html/328/test/index.php on line 64
+[26-Feb-2015 23:52:37 America/Chicago] PHP Warning:  include(dbphp): failed to open stream: No such file or directory in /home/caseym/public_html/328/basapp/submitData.php on line 9
+[26-Feb-2015 23:52:37 America/Chicago] PHP Warning:  include(dbphp): failed to open stream: No such file or directory in /home/caseym/public_html/328/basapp/submitData.php on line 9
+[26-Feb-2015 23:52:37 America/Chicago] PHP Warning:  include(): Failed opening 'dbphp' for inclusion (include_path='.:/opt/php54/lib/php') in /home/caseym/public_html/328/basapp/submitData.php on line 9
+[26-Feb-2015 23:52:37 America/Chicago] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/caseym/public_html/328/basapp/submitData.php on line 15
+[27-Feb-2015 00:00:52 America/Chicago] PHP Catchable fatal error:  Object of class PDOStatement could not be converted to string in /home/caseym/public_html/328/basapp/submitData.php on line 85
+[27-Feb-2015 00:02:24 America/Chicago] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/caseym/public_html/328/basapp/submitData.php on line 86
