@@ -3,9 +3,12 @@
 session_start();
 //*** Start the buffer
 ob_start();
+
+/*
 echo "<pre>";
 var_dump($_SESSION);
 echo "</pre>";
+*/
 ?>
 
 <div class="container" id="sum">
