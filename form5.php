@@ -7,6 +7,7 @@ echo"<prev>";
 var_dump($_SESSION);
 echo"</prev>";
 ?>
+<form action="submitData.php">
 <div class="container">
     <h3>Summary</h3>
     <p>Please verify your information is correct and click submit</p>
@@ -78,7 +79,8 @@ echo "<br><b>Credits: </b>" . $_SESSION['collegeCredits'];
    
 ?>
 
-<br><button action='submitData.php'>Submit</button>    
+<br><input type="submit" value="Submit">
+</form>   
     
     
     
