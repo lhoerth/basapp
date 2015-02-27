@@ -7,7 +7,6 @@ echo"<prev>";
 var_dump($_SESSION);
 echo"</prev>";
 ?>
-<form action="submitData.php">
 <div class="container">
     <h3>Summary</h3>
     <p>Please verify your information is correct and click submit</p>
@@ -73,14 +72,14 @@ if(isset($_SESSION['softReq'])){
  
 echo "<br><b>Education: </b>" . $_SESSION['lvlEducation'];
 echo "<br><b>Credits: </b>" . $_SESSION['collegeCredits'];
-
+echo "<br>"
 
    
    
 ?>
-
-<br><input type="submit" value="Submit">
-</form>   
+<form action="submitData.php" method="post">
+    <button class="col-md-2 col-md-offset-10 btn btn-primary" name="Final">Submit</button>
+</form>
     
     
     

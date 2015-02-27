@@ -4,11 +4,11 @@ session_start();
 //*** Start the buffer
 ob_start();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['Final'])){
     
-      include db.php;
+      require "db.php";
     
-   $sql = "INSERT INTO `Student_Info`(`First`, `Last`, `Email`, `Phone`, `Degree`, `Sid`, `Status`, `Prereqs`, `Education`, `Credits`, `Transcript`,`requestedDate`) VALUES (:key, :first, :last, :email, :phone, :degree, :sid, :status, :prereqs, :education, :credits, :transcript, :date)";
+   $sql = "INSERT INTO `Student_Info`(`First`, `Last`, `Email`, `Phone`, `Degree`, `Sid`, `Status`, `Prereqs`, `Education`, `Credits`, `Transcript`,`requestedDate`) VALUES (:first, :last, :email, :phone, :degree, :sid, :status, :prereqs, :education, :credits, :transcript, :date)";
 
                                         
                 
@@ -68,8 +68,7 @@ if(isset($_POST['submit'])){
                 $transcript = $_SESSION['transcript'];
                 $date = date(DATE_ATOM);
                 
-                
-                $statement->bindParam(':key', $key, PDO::PARAM_INT);
+            
                 $statement->bindParam(':first', $first, PDO::PARAM_STR);
                 $statement->bindParam(':last', $last, PDO::PARAM_STR);
                 $statement->bindParam(':email', $email, PDO::PARAM_STR);
