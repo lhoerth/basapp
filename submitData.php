@@ -119,10 +119,13 @@ if(isset($_POST['Final'])){
     <html>
     <body>
         <h1>'.$student.' student '.$degree.'</h1>
+        <a href="caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank"><em>Info:</em>What To Do Next?</a>
         
         
-        
-    ';*/
+    ';
+    mail($toTheCollege,$subjectToTheCollege,$messageAboutStudent,$headersToTheCollege);
+    
+    */
     
     
     //Email sent based on student
