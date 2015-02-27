@@ -69,7 +69,12 @@
 		  <tbody>
 					<?php
                                         foreach ($result as $row) {
-                                            
+					  $transcript;
+                                            if($row['Transcript'] == "NULL"){
+					      $transcript = "No Transcript";
+					    } else {
+					      $transcript = '<a href="' .$row['Transcript'].'" target="_blank">'.$row['Transcript'].'</a>';
+					    }
                                             echo
                                            
                                                    	'<tr><td>'.$row['requestedDate'].'</td>';
@@ -84,7 +89,7 @@
                                                         echo '<td>'.$row['Prereqs']. '</td>';
                                                         echo '<td>'.$row['Education']. '</td>';
                                                         echo '<td>'.$row['Credits']. '</th>';
-                                                        echo '<td><a href="'.$row['Transcript'].'" target="_blank">'.$row['Transcript'].'</a></td>';
+                                                        echo '<td>'.$transcript.'</td>';
                                                         '</tr>' ;
                                                         }
                                                         ?>

@@ -5,7 +5,7 @@ session_start();
 ob_start();
 
 if(isset($_POST['Final'])){
-    
+    $counter = 0;
       require "db.php";
     
    $sql = "INSERT INTO `Student_Info`(`First`, `Last`, `Email`, `Phone`, `Degree`, `Sid`, `Status`, `Prereqs`, `Education`, `Credits`, `Transcript`,`requestedDate`) VALUES (:first, :last, :email, :phone, :degree, :sid, :status, :prereqs, :education, :credits, :transcript, :date)";
@@ -33,15 +33,15 @@ if(isset($_POST['Final'])){
                 $status;
                 
                 if(isset($_SESSION['veteran'])){
-		    $status .= $_SESSION['veteran'];
+		    $status .= $_SESSION['veteran']." ";
                     $hasStatus = TRUE;
 		}
 		if(isset($_SESSION['is'])){
-		    $status .= $_SESSION['is'];
+		    $status .= $_SESSION['is']." ";
                     $hasStatus = TRUE;
 		}
 		if(isset($_SESSION['rs'])){
-		    $status .= $_SESSION['rs'];
+		    $status .= $_SESSION['rs']." ";
                     $hasStatus = TRUE;
 		}
                 
@@ -53,7 +53,7 @@ if(isset($_POST['Final'])){
                 //Prereqs determined based on degree wanting.
                 $prereqs;
                 if($_SESSION['degree'] == 'software'){
-		    $prereqs .= implode(",", $_SESSION['softReq']); 				
+		    $prereqs .= implode(",", $_SESSION['softReq']); 
 		}else if($_SESSION['degree']== 'network'){
 		    $prereqs .= implode(",", $_SESSION['netReq']); 
 		}else if($_SESSION['degree']== 'ud'){
@@ -92,7 +92,7 @@ if(isset($_POST['Final'])){
                $statement->execute();
     
     //If we want to email school with student info individually
-    if($_SESSION['degree'] == "software"){
+    /*if($_SESSION['degree'] == "software"){
         $toTheCollege = "casemorris@hotmail.com"; //Email to someone managing in software dev BAS
         $degree = "inquiring about a BAS in Software Development.";
     } else if($_SESSION['degree'] == "netork"){
@@ -102,6 +102,7 @@ if(isset($_POST['Final'])){
         $toTheCollege = "mobiuswheel@gmail.com"; //Email to someone managing any BAS
         $degree = "is un-sure what degree best fits!";
     }
+    */
     
     $subjectToTheCollege = "A new possible student!";
     
@@ -116,14 +117,15 @@ if(isset($_POST['Final'])){
     }
     
     $messageAboutStudent = '
-    <html>
-    <body>
+      <html>
+      <body>
         <h1>'.$student.' student '.$degree.'</h1>
         <a href="caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank">View Applicants</a>
-        
-        
+      </body>
+      </html>  
     ';
-    mail($toTheCollege,$subjectToTheCollege,$messageAboutStudent,$headersToTheCollege);
+    $counter++;
+    mail("mobiuswheel@gmail.com",$subjectToTheCollege,$messageAboutStudent,$headersToTheCollege);
     
     
     
@@ -133,7 +135,6 @@ if(isset($_POST['Final'])){
     $first_name = $_SESSION['first'];
     $last_name = $_SESSION['last'];
     $subject = "Form Submitted";
-    $subject2 = "Copy of your form submission";
     
     $headers = 'MIME-Version: 1.0'."\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -181,15 +182,17 @@ if(isset($_POST['Final'])){
     </body>
     </html>
     ';
-
+      $counter++;
+      
       if($_SESSION['student'] == "cs"){
         mail($to,$subject,$messageCurrentStudent,$headers);
     } else{
         mail($to,$subject,$messageNewStudent,$headers);
     }
-    
+    if($counter == 2){
     header("Location: thankyou.html");
     exit;
+    }
 
 }
     
