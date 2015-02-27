@@ -1,3 +1,10 @@
+<?php  
+//*** Start a session
+session_start();
+//*** Start the buffer
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,10 +34,43 @@
 
      $statement->execute();
      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+     
+     if(isset($_POST['Export'])){
+      // Original PHP code by Chirp Internet: www.chirp.com.au
+      // Please acknowledge use of this code by including this header.
+      function cleanData(&$str)
+      {
+	$str = preg_replace("/\t/", "\\t", $str);
+	$str = preg_replace("/\r?\n/", "\\n", $str);
+	if(strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+      }
+    
+      // file name for download
+      $filename = "website_data_" . date('Ymd') . ".txt";
+    
+      header("Content-Disposition: attachment; filename=\"$filename\"");
+      header("Content-Type: application/vnd.ms-excel");
+    
+      $flag = false;
+      foreach($result as $row) {
+	if(!$flag) {
+	  // display field/column names as first row
+	  echo implode("\t", array_keys($row)) . "\n";
+	  $flag = true;
+	}
+	array_walk($row, 'cleanData');
+	echo implode("\t", array_values($row)) . "\n";
+      }
+    
+      exit;
+	 }
 
     ?>    
 
     <div class="container-fluid">
+      <form action="#" method="post">
+      <button name="Export">Export to Text</button>
+      </form>
 	<table id="example" class="table table-striped table-bordered" cellspacing="0" width="97%" >
 	      <thead>
 		<tr>
@@ -111,8 +151,8 @@ $(document).ready(function() {
 } );
 
 	</script>
-  
-
-  
-  
 </html>
+<?php
+ //Flush buffer
+ ob_flush();
+?>
