@@ -3,21 +3,11 @@
 session_start();
 //*** Start the buffer
 ob_start();
-echo"<prev>";
+echo "<pre>";
 var_dump($_SESSION);
-echo"</prev>";
-
-
-
-
-
+echo "</pre>";
 ?>
-<style>
-    #sum{
-        background: #E6E6E6;
-        
-    }
-</style>
+
 <div class="container" id="sum">
     <h3>Summary</h3>
     <p>Please verify your information is correct and click submit</p>
