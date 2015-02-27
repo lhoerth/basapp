@@ -6,8 +6,19 @@ ob_start();
 echo"<prev>";
 var_dump($_SESSION);
 echo"</prev>";
+
+
+
+
+
 ?>
-<div class="container">
+<style>
+    #sum{
+        background: #E6E6E6;
+        
+    }
+</style>
+<div class="container" id="sum">
     <h3>Summary</h3>
     <p>Please verify your information is correct and click submit</p>
     <?php
@@ -77,7 +88,9 @@ echo "<br>"
    
    
 ?>
+
 <form action="submitData.php" method="post">
+   
     <button class="col-md-2 col-md-offset-10 btn btn-primary" name="Final">Submit</button>
 </form>
     
