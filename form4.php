@@ -115,19 +115,20 @@ $errorsArray = array();
             return "<div class='text-danger'>". $errorsArray[$name]."</div>";
         }
     }
+
 ?>
 <form role="form" class="form-inline" method="post" action="index.php?page=form4" enctype="multipart/form-data">
     <div class="container">
         <h4>Please select the highest that you have achieved</h4>        
-		<input type="radio" id="hs" name="degree" value="HS/GED" required>
+		<input type="radio" id="hs" name="degree" value="HS/GED" required <?php echo ($_SESSION['lvlEducation'] == "HS/GED")?"checked":"";?>>
 			<label for="hs">High school diploma or GED</label>
-		<br><input type="radio" id="aDeg" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)">
+		<br><input type="radio" id="aDeg" name="degree" value="Associates degree (AA, AS, AAS, AAS-T)" <?php echo ($_SESSION['lvlEducation'] == "Associates degree (AA, AS, AAS, AAS-T)")?"checked":"";?>>
 			<label for="aDeg">Associates degree (AA, AS, AAS, AAS-T)</label>
-		<br><input type="radio" id="bDeg" name="degree" value="Bachelor's degree">
+		<br><input type="radio" id="bDeg" name="degree" value="Bachelor's degree" <?php echo ($_SESSION['lvlEducation'] == "Bachelor's degree")?"checked":"";?>>
 			<label for="bDeg">Bachelor's degree</label>
-		<br><input type="radio" id="mDeg" name="degree" value="Master's degree">
+		<br><input type="radio" id="mDeg" name="degree" value="Master's degree" <?php echo ($_SESSION['lvlEducation'] == "Master's degree")?"checked":"";?>>
 			<label for="mDeg">Master's degree</label>
-		<br><input type="radio" id="phd" name="degree" value="PHD">
+		<br><input type="radio" id="phd" name="degree" value="PHD" <?php echo ($_SESSION['lvlEducation'] == "PHD")?"checked":"";?>>
 			<label for="phd">Ph.D.</label>
 		<?php echo error('degree') ?>          
 
