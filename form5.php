@@ -45,25 +45,24 @@ echo "</pre>";
    }
    
    
-   
-   if(isset($_SESSION['netReq'])){
-    $require = "<br><b>Prequisites Completed:</b>";
-    foreach($_SESSION['netReq'] as $info){
-        $require .= $info;
-    }
-    echo $require;
-   }
-   
-   
-   
-   
-if(isset($_SESSION['softReq'])){
-    $require = "<br><b>Prequisites Completed:</b>";
-    foreach($_SESSION['softReq'] as $info){
-        $require .= $info;
-    }
-    echo $require;
-   }
+
+	
+if(isset($_SESSION['netReq']) && $_SESSION['degree'] == "network"){
+	$end = trim(end($_SESSION['netReq']));
+	if (empty($end)){
+		array_pop($_SESSION['netReq']);
+	}
+
+	echo "<br><b>Prequisites Completed: </b>" . implode(",", $_SESSION['netReq']);
+}
+    
+if(isset($_SESSION['softReq']) && $_SESSION['degree'] == "software"){
+	$end = trim(end($_SESSION['softReq']));
+	if (empty($end)){
+		array_pop($_SESSION['softReq']);
+	}
+    echo "<br><b>Prequisites Completed: </b>" . implode(",", $SESSION['softReq']);
+}
    
     
    
