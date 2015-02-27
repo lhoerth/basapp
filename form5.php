@@ -64,7 +64,7 @@ if(isset($_SESSION['softReq']) && $_SESSION['degree'] == "software"){
 	if (empty($end)){
 		array_pop($_SESSION['softReq']);
 	}
-    echo "<br><b>Prequisites Completed: </b>" . implode(",", $SESSION['softReq']);
+    echo "<br><b>Prequisites Completed: </b>" . implode(",", $_SESSION['softReq']);
 }
    
     
