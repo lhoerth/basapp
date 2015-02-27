@@ -160,7 +160,11 @@ if(isset($_POST['Final'])){
     ';
     
     $messageNewStudent = '
+	<!DOCTYPE html>
     <html>
+	<head>
+		<title>Bachelor\'s Degree Application</title>
+	</head>
     <body>
     <h3>Hello '.$first_name.' '.$last_name.':</h3>
     <p>Thank you for your application to Green River\'s BAS program. An advisor will contact you within 2 business days.</p>
@@ -177,7 +181,7 @@ if(isset($_POST['Final'])){
         <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" /></a>
     <br>
     <br>
-    <a href="caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info:</em>What To Do Next?</a>  
+    <a href="caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"> <em> Info: </em> What To Do Next?</a>  
     </body>
     </html>
     ';
