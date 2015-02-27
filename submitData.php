@@ -89,7 +89,7 @@ if(isset($_POST['Final'])){
                 $statement->bindParam(':transcript', $transcript, PDO::PARAM_STR);
                 $statement->bindParam(':date', $date, PDO::PARAM_STR);
 
-               //$statement->execute();
+               $statement->execute();
     
     //If we want to email school with student info individually
     /*if($_SESSION['degree'] == "software"){
@@ -119,10 +119,13 @@ if(isset($_POST['Final'])){
     <html>
     <body>
         <h1>'.$student.' student '.$degree.'</h1>
+        <a href="caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank"><em>Info:</em>What To Do Next?</a>
         
         
-        
-    ';*/
+    ';
+    mail($toTheCollege,$subjectToTheCollege,$messageAboutStudent,$headersToTheCollege);
+    
+    */
     
     
     //Email sent based on student
@@ -178,7 +181,7 @@ if(isset($_POST['Final'])){
     </body>
     </html>
     ';
-    /*
+
       if($_SESSION['student'] == "cs"){
         mail($to,$subject,$messageCurrentStudent,$headers);
     } else{
@@ -187,7 +190,7 @@ if(isset($_POST['Final'])){
     
     header("Location: thankyou.html");
     exit;
-*/
+
 }
     
  //Flush buffer
