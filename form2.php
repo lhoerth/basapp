@@ -59,10 +59,10 @@
 						</fieldset>
 					</div>
 					<br>
-					<div class="row">
-						<button class="col-md-2 btn btn-primary" name="Previous1">Previous</button>
-						<input type="Submit" class="col-md-2 col-md-offset-10 btn btn-primary" name='Submit2' value="Continue">
-					</div>
+					<div class="row" id="buttons">
+						<button type="submit" class="col-md-2 btn btn-primary" name="Previous1">Previous</button>
+						<button type="submit" class="col-md-2 col-md-offset-8 btn btn-primary" name="Submit2">Continue</button>
+				</div>
 				
             </div>
 		</form>
