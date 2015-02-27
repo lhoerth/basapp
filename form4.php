@@ -76,16 +76,16 @@ $errorsArray = array();
 				}	
 				// Then check file type
 				else if (in_array($_FILES['file']['type'], $valid_types)) {
-							$_SESSION['error'] = "invalid type";
-							// Check for duplicate file name
-							if (file_exists($newFile))
-									echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
-							else {
-								// No bugs, move file to upload directory
-								move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
-								$_SESSION['transcript'] = $newFile;
-								echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
-							}
+					$_SESSION['error'] = "invalid type";
+					// Check for duplicate file name
+					if (file_exists($newFile))
+							echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
+					else {
+						// No bugs, move file to upload directory
+						move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
+						$_SESSION['transcript'] = $newFile;
+						echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
+					}
 				}
 					   
 				

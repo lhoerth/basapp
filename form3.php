@@ -3,12 +3,12 @@ session_start();
  //*** Start the buffer
 ob_start();
 
-/* // DEBUGGING - OUTPUT SESSION 
+/* // DEBUGGING - OUTPUT SESSION */
 echo "<pre>";
 print_r($_POST);
 print_r($_SESSION);
 echo "</pre>";
-*/
+
 
 
 
@@ -25,6 +25,7 @@ echo "</pre>";
 	}
 
 if(isset($_POST['Submit3'])){
+	
 	if(isset($_POST['degree'])){
 		$_SESSION['degree'] = $_POST['degree'];
 		if($_SESSION['degree'] == 'software'){
