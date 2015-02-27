@@ -1,4 +1,9 @@
 <?php
+//*** Start a session
+session_start();
+//*** Start the buffer
+ob_start();
+
 if(isset($_POST['submit'])){
     if($_SESSION['degree'] == "software"){
         $toTheCollege = "casemorris@hotmail.com"; //Email to someone managing in software dev BAS
@@ -91,21 +96,7 @@ if(isset($_POST['submit'])){
     }
     
     }
+    
+ //Flush buffer
+ ob_flush();
 ?>
-
-<!DOCTYPE html>
-<head>
-<title>Form submission</title>
-</head>
-<body>
-
-<form action="" method="post">
-First Name: <input type="text" name="first_name"><br>
-Last Name: <input type="text" name="last_name"><br>
-Email: <input type="text" name="email"><br>
-Message:<br><textarea rows="5" name="message" cols="30"></textarea><br>
-<input type="submit" name="submit" value="Submit">
-</form>
-
-</body>
-</html> 
