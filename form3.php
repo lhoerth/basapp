@@ -3,12 +3,13 @@ session_start();
  //*** Start the buffer
 ob_start();
 
-/* // DEBUGGING - OUTPUT SESSION */
+/* // DEBUGGING - OUTPUT SESSION 
 echo "<pre>";
+echo strlen($_SESSION['comment']);
 print_r($_POST);
 print_r($_SESSION);
 echo "</pre>";
-
+*/
 
 
 
@@ -24,8 +25,26 @@ echo "</pre>";
 		exit;
 	}
 
+if (isset($_SESSION['softReq'])) {
+	end($_SESSION['softReq']);
+	$last_id=key($_SESSION['softReq']);
+	$_SESSION['softReq'][$last_id] = substr($_SESSION['softReq'][$last_id],0,8000);
+}
+
+if (isset($_SESSION['netReq'])) {
+	end($_SESSION['netReq']);
+	$last_id=key($_SESSION['netReq']);
+	$_SESSION['netReq'][$last_id] = substr($_SESSION['netReq'][$last_id],0,8000);
+}
+
+if (isset($_SESSION['comment'])) {
+	$_SESSION['comment'] = substr($_SESSION['comment'],0,8000);
+}
+
 if(isset($_POST['Submit3'])){
 	
+	
+		
 	if(isset($_POST['degree'])){
 		$_SESSION['degree'] = $_POST['degree'];
 		if($_SESSION['degree'] == 'software'){
