@@ -12,6 +12,7 @@
             margin-left: 20px;
             
         }
+	
      
     </style>
       
@@ -36,20 +37,7 @@
 
         
   <?php  
-  $username="";
-    $password="";
-    $hostname="localhost";
-    $dbname="";
-    
-    try {
-      //database object
-      $dbh = new PDO ("mysql:host=$hostname;
-                      dbname=shristhy_grcc", $username, $password);
-      echo 'connected to database';
-    }
-    catch(PDOException $e) {
-      echo $e->getMessage();
-    }
+  require "db.php";
     
      $sql = "SELECT * FROM `Student_Info`";
     $statement = $dbh->prepare($sql);
@@ -66,7 +54,7 @@
 				<table id="example" class="table table-striped table-bordered" cellspacing="0" width="97%" >
 					<thead>
 						<tr>
-							<th>Key</th>
+							
                                                         <th>First</th>
 							<th>Last Name</th>
 							<th>Email</th>
@@ -104,8 +92,8 @@
                                             
                                             echo
                                            
-                                                   	'<tr>'.
-							'<td>'.$row['Key'].'</td>';
+                                                   	'<tr>';
+							
                                                        echo '<td>'.$row['First'].'</td>';
 							echo '<td>'.$row['Last']. '</td>';
 							echo '<td>'.$row['Email']. '</td>';
@@ -116,7 +104,7 @@
                                                         echo '<td>'.$row['Prereqs']. '</td>';
                                                         echo '<td>'.$row['Education']. '</td>';
                                                         echo '<td>'.$row['Credits']. '</th>';
-                                                        echo '<td>'.$row['Transcript'].'</td>';
+                                                        echo '<td><a href="'.$row['Transcript'].'" target="_blank">'.$row['Transcript'].'</a></td>';
                                                         '</tr>' ;
                                                         }
                                                         ?>
