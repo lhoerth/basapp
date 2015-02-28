@@ -4,6 +4,13 @@ session_start();
 //*** Start the buffer
 ob_start();
 
+// If user was on form5 (summary) and clicked the previous button,
+// that gets posted here (this page is the action), so we'll send them to form4 from here.
+if(isset($_POST['Previous4'])){
+	header("Location: index.php?page=form4");
+	exit;
+}
+
 if(isset($_POST['Final'])){
     
       require "db.php";

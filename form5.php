@@ -82,8 +82,12 @@ echo "<br>"
 ?>
 
 <form action="submitData.php" method="post">
-   
-    <button class="col-md-2 col-md-offset-10 btn btn-primary" name="Final">Submit</button>
+	<div class="row">
+		<br>
+		<button class="col-md-2 btn btn-primary" name='Previous4'>Previous</button>
+		<button class="col-md-2 col-md-offset-10 btn btn-primary" name="Final">Submit</button>
+	</div>
+    
 </form>
     
     
