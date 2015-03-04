@@ -1,0 +1,6 @@
+[02-Mar-2015 23:11:07 America/Chicago] PHP Fatal error:  Call to undefined function error() in /home/caseym/public_html/328/basapp/admin/index.php on line 54
+[02-Mar-2015 23:11:11 America/Chicago] PHP Fatal error:  Call to undefined function error() in /home/caseym/public_html/328/basapp/admin/index.php on line 54
+[02-Mar-2015 23:17:10 America/Chicago] PHP Parse error:  syntax error, unexpected 'has' (T_STRING), expecting ',' or ';' in /home/caseym/public_html/328/basapp/admin/index.php on line 55
+[03-Mar-2015 15:49:22 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/caseym/public_html/328/basapp/admin/checkLogin.php on line 50
+[03-Mar-2015 15:50:24 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/caseym/public_html/328/basapp/admin/checkLogin.php on line 50
+[03-Mar-2015 16:04:28 America/Chicago] PHP Fatal error:  Call to undefined function head() in /home/caseym/public_html/328/basapp/admin/checkLogin.php on line 54
