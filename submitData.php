@@ -120,7 +120,7 @@ if(isset($_POST['Final'])){
       <html>
       <body>
         <h1>'.$student.' student '.$degree.'</h1>
-        <a href="caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank">View Applicants</a>
+        <a href="http://caseym.greenrivertech.net/328/basapp/showApplied.php" target="_blank">View Applicants</a>
       </body>
       </html>  
     ';
@@ -178,7 +178,7 @@ if(isset($_POST['Final'])){
         <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" /></a>
     <br>
     <br>
-    <a href="caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info:</em>What To Do Next?</a>  
+    <a href="http://caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info:</em>What To Do Next?</a>  
     </body>
     </html>
     ';
