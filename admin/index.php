@@ -63,9 +63,6 @@
                             </div>
 
                         </form>     
-
-
-
                         </div>                     
                     </div>  
         </div>
@@ -86,7 +83,7 @@
                                 </div> 
 
                                 <div class="form-group">
-                                    <!-- Button -->                                        
+                                                         
                                     <div class="col-md-offset-3 col-md-9">
                                         <button id="btn-signup" type="Submit" class="btn btn-info" name='Reset'>Send Reset</button>
                                     </div>
