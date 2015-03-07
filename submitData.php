@@ -5,7 +5,7 @@ session_start();
 ob_start();
 
 // If user was on form5 (summary) and clicked the previous button,
-// that gets posted here (this page is the action), so we'll send them to form4 from here.
+// that gets posted here (this page is the action), so from here they should be sent back to form4.
 if(isset($_POST['Previous4'])){
 	header("Location: index.php?page=form4");
 	exit;
