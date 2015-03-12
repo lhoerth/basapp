@@ -47,21 +47,30 @@ if(isset($_POST[Submit]))
     $emailCount=$result->rowCount();
     
     if($emailCount==1){
-        $_SESSION['resetEmail'];
-        $encrypt = md5($myemail);
-        $message = "Your password reset link send to your e-mail address.";
-        $to=$myemail;
-        $subject="Forget Password";
-        $body='Hello<br><br>Click here to reset your password http://caseym.greenrivertech.net/328/basapp/admin/passReset.php?encrypt='.$encrypt;
         
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-        mail($to,$subject,$body,$headers);
+        $subject = "Forgot Password";
+    
+        $headers = 'MIME-Version: 1.0'."\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         
+        $message = '
+          <html>
+          <body>
+            <h1>Hello,</h1>
+            <p>Your password reset link send to your e-mail address.</p>
+            <a href="http://caseym.greenrivertech.net/328/basapp/admin/passReset.php?'.$myemail.'" target="_blank">Reset Password</a>
+          </body>
+          </html>  
+        ';
+        
+        mail($myemail,$subject,$message,$headers);
+        header("Location:index.php");
+        exit;
+           
     }else{
         $_SESSION['errorMsg']="Not able to reset password!";
         header("Location:index.php");
+        exit;
     }
     
 }

@@ -18,7 +18,8 @@
         <title>Admin Main</title>
         
         <!-- Latest compiled and minified Bootsrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
         <style>
         
         body { padding-bottom: 70px; }
@@ -32,6 +33,11 @@
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+        
+
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,19 +55,23 @@
                         echo'<h2>Change Password</h2>';
                     } else if($_GET['menu'] == 2){
                         echo'<h2>Logged Out</h2>';
+                    } else if($_GET['menu'] == 3){
+                        echo'<h2>Add New Admin</h2>';
                     } else{
-                        echo'<h2>Who has applied</h2>';
+                        echo'<h2>Student Info</h2>';
                     }
                 ?>
             </div>
             
             <ul class="nav navbar-nav navbar-right">
+                <li class="divide"><a href="mainAdmin.php">Student Info</a></li>
                 <li class="divide"><a href="mainAdmin.php?menu=2">Logout</a></li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account Maintenance<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="mainAdmin.php?menu=1">Change Password</a></li>
-                    <li><a href="mainAdmin.php">Who has applied</a></li>
+                    <li><a href="mainAdmin.php?menu=3">Add New Admin</a></li>
+                    
                   </ul>
                 </li>
               </ul>
@@ -73,6 +83,8 @@
                 $page = "chngPass";
             } else if($_GET['menu'] == 2){
                 $page = "logout";
+            } else if($_GET['menu'] == 3){
+                $page = "add";
             } else{
                 $page = "../showApplied";
             }

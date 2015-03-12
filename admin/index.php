@@ -18,8 +18,9 @@
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
-
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,7 +40,7 @@
 
                     <div style="padding-top:30px" class="panel-body" >
 
-                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                       
                             
                         <form id="loginform" method="post" class="form-horizontal" action="checkLogin.php" role="form">
                                     
@@ -52,8 +53,11 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 <input id="login-password" type="password" class="form-control" name="password" placeholder="password">            
                             </div>
-                            <?php if(isset($_SESSION['errorMsg'])){echo"<div class='alert alert-danger'>".$_SESSION['errorMsg']."</div>";}?>
-
+                            
+                            <?php
+                                if(isset($_SESSION['sucess'])){echo "<div class='alert alert-success'>".$_SESSION['sucess']."</div>"; unset($_SESSION['errorMsg']);}
+                                else if(isset($_SESSION['errorMsg'])){echo"<div class='alert alert-danger'>".$_SESSION['errorMsg']."</div>";}?>
+    
                             <div style="margin-top:10px" class="form-group">
                     
                                 <div class="col-sm-12 controls">
