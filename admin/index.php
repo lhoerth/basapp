@@ -46,7 +46,11 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="login-username" type="text" class="form-control" name="email" value="<?php if(isset($_SESSION['errorEmail'])){ echo($_SESSION['errorEmail']);};?>" placeholder="email">                                        
+                                <input id="login-username" type="text" class="form-control" name="email" value="<?php 
+									if(isset($_SESSION['errorEmail'])){ 
+										echo($_SESSION['errorEmail']);
+										unset($_SESSION['errorEmail']);
+									};?>" placeholder="email">                                        
                             </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">

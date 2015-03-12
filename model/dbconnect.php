@@ -3,7 +3,7 @@
 
  //*** Connect to the database ***
 	// path to file where you define variables for the connection.
-	include 'config/dbcred.php';
+	include '../config/dbcred.php';
 		/* example: 
 				$dbname = "name_somedatabase";
 				$username = "name_someuser";

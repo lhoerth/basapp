@@ -114,6 +114,7 @@
                         <?php
                         if(isset($_SESSION['errorMsg'])){
                             echo($_SESSION['errorMsg']);
+							unset($_SESSION['errorMsg']);
                         }
                         ?>
                     </div>

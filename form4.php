@@ -39,7 +39,7 @@ $errorsArray = array();
 				if ($_POST['collegeCredits'] >= 0 && $_POST['collegeCredits'] <= 999){
 					$_SESSION['collegeCredits'] = $_POST['collegeCredits'];
 				} else {
-					$errorsArray['collegeCredits'] = "Credits enter are invalid!";
+					$errorsArray['collegeCredits'] = "Credits entered invalid!";
 					$isValid = FALSE;
 				}
 				
@@ -72,24 +72,33 @@ $errorsArray = array();
 				
 				//Check file size - 2 MB maximum
 				if($_SERVER['CONTENT_LENGTH'] > 2000000) {
-							echo "<p class='error'>File is too large to upload. Maximum file size is 2 MB.</p>";
+							$errorsArray['fileUpload'] = "<p class='error'>File is too large to upload. Maximum file size is 2 MB.</p>";
+							$isValid = FALSE;
 				}	
 				// Then check file type
 				else if (in_array($_FILES['file']['type'], $valid_types)) {
-					$_SESSION['error'] = "invalid type";
+					// (This is the valid type case)
+					
 					// Check for duplicate file name
-					if (file_exists($newFile))
-							echo "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
+					if (file_exists($newFile)){
+						// duplicate file name
+						$errorsArray['fileUpload'] = "<p class='error'>Error uploading: {$_FILES['file']['name']} already exists.</p>";
+						$isValid = FALSE;
+					}
 					else {
 						// No bugs, move file to upload directory
 						move_uploaded_file($_FILES['file']['tmp_name'],$newFile);
 						$_SESSION['transcript'] = $newFile;
-						echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
+						//echo "<p class='success'>Uploaded {$_FILES['file']['name']} successfully!</p>";
 					}
+				}			
+				else {
+					// invalid file type
+					$errorsArray['fileUpload'] = "invalid file type";
+					$isValid = FALSE;
 				}
-					   
 				
-				
+				// Verify user agrees to terms
 				if ($_POST['checkbox']=="agree"){
 						$_SESSION['isChecked'] = $_POST['checkbox'];
 				}else{
@@ -140,7 +149,7 @@ $errorsArray = array();
         <h5>You can upload an unofficial transcript here</h5>
        
         <input type="file" class="btn btn-lg" name="file" id="file">
-        
+        <?php echo error('fileUpload') ?>
         <br>
         <input type="checkbox" id="agree" name="checkbox" value="agree" required>
 			<label for="agree"> I verify that the information submitted here is accurate and complete.</label>
