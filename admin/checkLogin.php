@@ -37,7 +37,7 @@ if(isset($_POST[Submit]))
      else {
      // Records an error and goes back to index
      $_SESSION["errorEmail"] = $myemail;
-     $_SESSION['errorMsg'] ="Invalid Email and Password";
+     $_SESSION['errorMsg'] ="Invalid Email/Password";
      header("Location:index.php");
      }
 }else if(isset($_POST['Reset'])){
