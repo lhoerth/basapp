@@ -185,7 +185,7 @@ if(isset($_POST['Final'])){
         <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" /></a>
     <br>
     <br>
-    <a href="http://caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info:</em>What To Do Next?</a>  
+    <a href="http://caseym.greenrivertech.net/328/basapp/nextsteps.php" target="_blank"><em>Info: </em> What To Do Next?</a>  
     </body>
     </html>
     ';
