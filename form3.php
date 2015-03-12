@@ -41,10 +41,7 @@ if (isset($_SESSION['comment'])) {
 	$_SESSION['comment'] = substr($_SESSION['comment'],0,8000);
 }
 
-if(isset($_POST['Submit3'])){
-	
-	
-		
+if(isset($_POST['Submit3'])){		
 	if(isset($_POST['degree'])){
 		$_SESSION['degree'] = $_POST['degree'];
 		if($_SESSION['degree'] == 'software'){
