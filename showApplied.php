@@ -114,6 +114,7 @@ ob_start();
 					      $transcript = "No Transcript";
 					    } else {
 					      $transcript = '<a class="btn btn-primary" href="http://caseym.greenrivertech.net/328/basapp/' .$row['Transcript'].'" target="_blank">View Transcript</a>';
+
 					    }
                                             echo
                                            
