@@ -113,7 +113,7 @@ ob_start();
                                             if($row['Transcript'] == "NULL"){
 					      $transcript = "No Transcript";
 					    } else {
-					      $transcript = '<a href="' .$row['Transcript'].'" target="_blank">'.$row['Transcript'].'</a>';
+					      $transcript = '<a class="btn btn-primary" href="http://caseym.greenrivertech.net/328/basapp/' .$row['Transcript'].'" target="_blank">View Transcript</a>';
 					    }
                                             echo
                                            
@@ -145,7 +145,7 @@ ob_start();
 <script type="text/javascript" class="init">
 
 $(document).ready(function() {
-	$('#example').dataTable({"order": [ 0, "desc" ]});
+	$('#example').dataTable({"order": [ 0, "desc" ]},{"columnDefs":[{"width": "20%", "targets":0}]});
 	
 	
 } );
