@@ -113,7 +113,7 @@ ob_start();
                                             if($row['Transcript'] == "NULL"){
 					      $transcript = "No Transcript";
 					    } else {
-					      $transcript = '<a href="' .$row['Transcript'].'" target="_blank">'.$row['Transcript'].'</a>';
+					      $transcript = '<a href="../' .$row['Transcript'].'" target="_blank">'.$row['Transcript'].'</a>';
 					    }
                                             echo
                                            
